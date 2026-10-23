@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"
 
-export default function Monitor() {
+export default function MonitoringLine() {
   const { nomor } = useParams()
 
   return (

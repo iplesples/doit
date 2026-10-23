@@ -8,7 +8,8 @@ import {
 import Login from "@/pages/Login"
 import Master from "@/pages/Master"
 import Qc from "@/pages/Qc"
-import Monitor from "@/pages/Monitor"
+import MonitoringLine from "@/pages/MonitoringLine"
+import Monitoring from "@/pages/Monitoring"
 import ProtectedRoute from "@/components/fragments/ProtectedRoute"
 
 export default function App() {
@@ -26,7 +27,8 @@ export default function App() {
           <Route path="/dashboard/qc/endline/:nomor" element={<Qc />} />
         </Route>
 
-        <Route path="/monitor/line/:nomor" element={<Monitor />} />
+        <Route path="/monitor/line/:nomor" element={<MonitoringLine />} />
+        <Route path="/monitoring" element={<Monitoring />} />
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

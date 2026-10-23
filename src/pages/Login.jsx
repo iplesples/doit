@@ -48,7 +48,6 @@ function getPaydayMessage() {
   return `${difference} hari lagi gajian, guys! 💸`
 }
 
-// Mengubah error axios menjadi pesan yang bisa ditampilkan
 function getErrorMessage(err) {
   const detail = err.response?.data?.detail
 
@@ -98,7 +97,6 @@ export default function Login() {
 
       sessionStorage.setItem("auth", JSON.stringify(session))
 
-      // Pengguna selalu diarahkan ke dashboard sesuai akunnya
       navigate(data.dashboard_path, { replace: true })
     } catch (err) {
       setError(getErrorMessage(err))
@@ -116,17 +114,22 @@ export default function Login() {
       <section className="w-full max-w-md relative z-10 animate-in fade-in zoom-in-95 duration-500">
         {/* Identitas aplikasi */}
         <div className="mb-8 text-center">
-          <div className="mx-auto flex size-16 items-center justify-center rounded-2xl bg-linear-to-br from-primary to-primary/80 text-2xl font-bold text-primary-foreground shadow-lg shadow-primary/25 ring-1 ring-white/20">
-            D
-          </div>
+          {/* Logo QC Interaktif (Bisa Diklik Mengarahkan ke Monitoring) */}
+          <button
+            type="button"
+            onClick={() => navigate("/monitoring")}
+            title="Buka Live QC Monitoring"
+            className="group relative mx-auto flex size-16 items-center justify-center rounded-2xl bg-linear-to-br from-primary to-primary/80 text-xl font-black text-primary-foreground shadow-lg shadow-primary/25 ring-1 ring-white/20 transition-all duration-300 hover:scale-105 hover:shadow-primary/40 focus:outline-hidden cursor-pointer"
+          >
+            <span>QC</span>
+            
+            {/* Pendaran halus saat logo di-hover */}
+            <span className="absolute -inset-0.5 rounded-2xl bg-primary/30 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
+          </button>
 
-          <h1 className="mt-5 text-3xl font-heading font-bold tracking-tight text-foreground">
-            QC ERP
-          </h1>
-
-          <p className="mt-1.5 text-sm font-medium text-muted-foreground">
-            Digitalisasi Quality Control Industri Garmen
-          </p>
+          <h5 className="mt-1.5 text-sm font-medium text-muted-foreground">
+            System tracking repair qc sewing real time
+          </h5>
         </div>
 
         {/* Form login card */}
@@ -176,7 +179,7 @@ export default function Login() {
 
               <Button
                 type="submit"
-                className="w-full h-12 text-base font-medium shadow-md transition-all hover:shadow-lg hover:shadow-primary/20"
+                className="w-full h-12 text-base font-medium shadow-md transition-all hover:shadow-lg hover:shadow-primary/20 cursor-pointer"
                 disabled={loading || !nrk.trim()}
               >
                 {loading ? (
@@ -208,7 +211,7 @@ export default function Login() {
         </Card>
 
         <p className="mt-6 text-center text-xs text-muted-foreground/80 font-medium">
-          QC ERP · Developed by Ilyas Sangaji
+          Prototype · Developed by Ilyas Sangaji
         </p>
       </section>
     </main>
